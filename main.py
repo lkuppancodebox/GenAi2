@@ -22,6 +22,7 @@ def gen_prompt(topic, n) :
     '2':
     and so on.."" \n
     ### Only YAML format. No other text required
+    ### do not include the char ```
     '''.format(n, topic)
 
     return prompt_input
@@ -38,9 +39,8 @@ def get_quiz_dict(topic, count):
             quiz_dict = yaml.safe_load(resp)
             return quiz_dict
             break
-        except:
-            print("Retrying..")
-
+        except Exception as e:
+            print("Retrying.. ")
 
 if __name__ == '__main__':
 
